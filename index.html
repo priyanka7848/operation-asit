@@ -83,8 +83,14 @@ opacity:0.7;
 }
 
 @keyframes float{
-0%{transform:translateY(0);opacity:0;}
-100%{transform:translateY(-110vh);opacity:1;}
+0%{
+transform:translateY(0);
+opacity:0;
+}
+100%{
+transform:translateY(-110vh);
+opacity:1;
+}
 }
 
 .typewriter{
@@ -100,23 +106,27 @@ font-size:18px;
 }
 </style>
 </head>
-
 <body>
-
-<!-- 🎵 AUDIO (ADD YOUR SONG LINK HERE) -->
-<audio id="bgMusic" loop>
+<audio controls>
   <source src="sitare.mpeg" type="audio/mpeg">
+  Your browser does not support audio.
 </audio>
 
 <div class="container">
 
-<!-- LOGIN -->
+<!-- LOGIN PAGE -->
 <div id="login" class="card">
-<h1>🔒 TOP SECRET FILE</h1>
+<h1>🔒 TOP SECRET FILE 🔒</h1>
 
 <p>
-Access Restricted<br><br>
+Access Restricted
+<br><br>
 A confidential file has been recovered.
+<br>
+This file contains classified memories,
+special moments and a birthday surprise.
+<br><br>
+Only one person is authorized to view it.
 </p>
 
 <input type="text" id="password" placeholder="Enter Secret Access Code">
@@ -128,7 +138,7 @@ A confidential file has been recovered.
 <p id="error" style="margin-top:15px;color:#ffb3c6;"></p>
 </div>
 
-<!-- LOADING -->
+<!-- LOADING PAGE -->
 <div id="loadingPage" class="hidden card">
 <h1>Verification In Progress</h1>
 <div class="typewriter" id="typewriter"></div>
@@ -136,47 +146,181 @@ A confidential file has been recovered.
 
 <!-- SLIDES -->
 <div id="slidesPage" class="hidden">
+
 <div class="card">
+
 <h1 id="slideTitle"></h1>
-<img id="slideImage">
+
+<img id="slideImage" src="">
+
 <p id="slideText" style="margin-top:20px;"></p>
+
 <button onclick="nextSlide()">Next Evidence</button>
-</div>
+
 </div>
 
-<!-- FINAL -->
+</div>
+
+<!-- FINAL PAGE -->
 <div id="finalPage" class="hidden card">
+
 <h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
 
 <div class="final-message">
 
-Final Report:
+<p>
+
+<strong>CONFIDENTIAL REPORT</strong>
+
 <br><br>
 
-Subject ASIT has been found guilty of:
+The One Who Holds My heart❤️ and Changed Everything❤️ : Asit
+
 <br><br>
 
-❤️ Making someone smile every day
+After reviewing all available evidence,
+the investigation has revealed something unexpected...
+
+<br><br>
+
+The smile,
+the kindness,
+the strength,
+the little moments,
+the memories,
+and the way he makes someone's world brighter...
+
+<br><br>
+
+All of them point to the same person.
+
+<br><br>
+
+<strong>You.</strong>
+
+<br><br>
+
+❤️ Final Verdict ❤️
+
+<br><br>
+
+You are guilty of:
+
+<br><br>
+
+• Stealing someone's heart without permission
+
 <br>
-🌟 Being special without even trying
+
+• Becoming the reason behind countless smiles
+
 <br>
-🤗 Being supportive and caring
+
+• Turning ordinary days into unforgettable memories
+
 <br>
-💖 Creating unforgettable memories
+
+• Being missed more than you could ever imagine
+
 <br><br>
 
-Sentence Awarded:
+No defense was found.
+
 <br>
-Lifetime of happiness, success and love.
+
+No appeal is allowed.
+
+<br>
+
+The verdict is final.
+
 <br><br>
 
-🎂 HAPPY BIRTHDAY ASIT 🎂
+🎂 Birthday Sentence 🎂
+
 <br><br>
 
-May all your dreams come true and may this year bring you endless happiness.
+✨ Endless happiness
+
+<br>
+
+✨ Success in everything you do
+
+<br>
+
+✨ Beautiful memories
+
+<br>
+
+✨ A lifetime of being deeply loved
+
 <br><br>
 
-With lots of love ❤️
+❤️ HAPPY BIRTHDAY MY LOVE ❤️
+
+<br><br>
+
+If there is one thing this investigation proved,
+it's that you are far more special than you realize.
+
+<br><br>
+
+No matter how many birthdays come and go,
+there will always be a place in my heart
+that belongs only to you.
+
+<br><br>
+
+Thank you for every smile,
+every laugh,
+every memory,
+and every moment.
+
+<br><br>
+
+And if I had to choose again...
+
+<br><br>
+
+I would still choose you.
+
+<br><br>
+
+❤️ With all my love,
+
+<br>
+
+Priyanka ❤️
+
+</p>
+
+<button onclick="showSecret()">One Last Secret...</button>
+
+</div>
+
+</div>
+
+<!-- SECRET PAGE -->
+<div id="secretPage" class="hidden card">
+
+<h1>💌 Final Secret 💌</h1>
+
+<p style="font-size:22px;line-height:1.8;">
+
+The biggest secret of this entire website...
+
+<br><br>
+
+is that it was never an investigation.
+
+<br><br>
+
+It was a love letter disguised as one.
+
+<br><br>
+
+❤️ Happy Birthday, My Favorite Person ❤️
+
 </p>
 
 </div>
@@ -185,60 +329,105 @@ With lots of love ❤️
 
 <script>
 
-function checkPassword(){
+function unlock(){
 
-let pass=document.getElementById("password").value.toUpperCase();
+let pass=document.getElementById("password").value;
 
-if(pass==="ASIT"){
+if(pass.toLowerCase()=="agentasit"){
+
 document.getElementById("login").style.display="none";
-document.getElementById("mission").classList.remove("hidden");
-showSlide();
+document.getElementById("loadingPage").classList.remove("hidden");
+
+startTyping();
+
 }else{
-document.getElementById("msg").innerText=
-"❌ Incorrect Code. Hint: Aaj kis ka birthday hai?";
+
+document.getElementById("error").innerHTML=
+"❌ Access Denied<br>Hint: Agent + His Name";
 }
+}
+
+const messages=[
+"Scanning records...",
+"Verifying identity...",
+"Matching memories...",
+"Access Granted...",
+"Welcome, Agent Asit ❤️"
+];
+
+let msgIndex=0;
+
+function startTyping(){
+
+let box=document.getElementById("typewriter");
+
+let interval=setInterval(()=>{
+
+if(msgIndex<messages.length){
+
+box.innerHTML=messages[msgIndex];
+msgIndex++;
+
+}else{
+
+clearInterval(interval);
+
+setTimeout(()=>{
+
+document.getElementById("loadingPage").style.display="none";
+document.getElementById("slidesPage").classList.remove("hidden");
+
+showSlide();
+
+},1500);
+
+}
+
+},1200);
 }
 
 const slides=[
+
 {
 title:"Evidence #1",
 img:"evis1.jpeg",
-text:"This smile has the power to make someone's whole day better. 😊"
+text:"A smile capable of turning an ordinary day into a beautiful one."
 },
+
 {
 title:"Evidence #2",
-img:"evi4.jpg",
-text:"A person who keeps moving forward no matter what."
+img:"evi6.jpeg",
+text:"A person whose determination inspires everyone around him."
 },
+
 {
 title:"Evidence #3",
-img:"evi6.jpg",
-text:"Every memory becomes special because of you. ❤️"
+img:"evi4.jpeg",
+text:"Every memory becomes more meaningful when you're a part of it."
 },
+
 {
 title:"Evidence #4",
-img:"evi3.jpg",
-text:"Distance and time can never reduce true affection."
+img:"evi3.jpeg",
+text:"Distance may separate places, but never genuine feelings."
 },
+
 {
-title:"Evidence #5",
-img:"evis2.jpg",
-text:"The most important evidence collected so far. 💖"
+title:"Final Evidence",
+img:"evis2.jpeg",
+text:"The strongest piece of evidence collected during this investigation: You are deeply appreciated, admired and loved."
 }
+
 ];
 
 let current=0;
 
 function showSlide(){
 
-document.getElementById("title").innerText=
-slides[current].title;
+document.getElementById("slideTitle").innerHTML=slides[current].title;
+document.getElementById("slideImage").src=slides[current].img;
+document.getElementById("slideText").innerHTML=slides[current].text;
 
-document.getElementById("photo").src=
-slides[current].img;
-
-document.getElementById("text").innerText=
-slides[current].text;
 }
 
 function nextSlide(){
@@ -246,14 +435,25 @@ function nextSlide(){
 current++;
 
 if(current<slides.length){
+
 showSlide();
+
 }else{
-document.getElementById("mission").style.display="none";
+
+document.getElementById("slidesPage").style.display="none";
 document.getElementById("finalPage").classList.remove("hidden");
+
 }
 }
 
-for(let i=0;i<30;i++){
+function showSecret(){
+
+document.getElementById("finalPage").style.display="none";
+document.getElementById("secretPage").classList.remove("hidden");
+
+}
+
+for(let i=0;i<35;i++){
 
 let heart=document.createElement("div");
 
@@ -263,11 +463,12 @@ heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.animationDuration=
-(3+Math.random()*5)+"s";
+heart.style.animationDuration=(5+Math.random()*5)+"s";
 
 document.body.appendChild(heart);
+
 }
+
 </script>
 
 </body>
