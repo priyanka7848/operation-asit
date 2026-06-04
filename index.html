@@ -107,6 +107,38 @@ font-size:18px;
 </style>
 </head>
 <body>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Special Website</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background-color: #ffe6f0;
+    }
+
+    h1 {
+      color: #ff3399;
+    }
+
+    img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>❤️ My Special Moments ❤️</h1>
 
 <div class="container">
 
@@ -139,6 +171,50 @@ Only one person is authorized to view it.
 <h1>Verification In Progress</h1>
 <div class="typewriter" id="typewriter"></div>
 </div>
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+</head>
+
+<body>
+
+<div id="loginBox">
+  <h2>Login</h2>
+  <input type="text" id="user" placeholder="Username"><br><br>
+  <input type="password" id="pass" placeholder="Password"><br><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<div id="mainPage" style="display:none;">
+  <h2>Welcome ❤️</h2>
+
+  <audio id="bgMusic">
+    <source src="sitare.mpeg" type="audio/mpeg">
+  </audio>
+
+  <img src="evi7.jpeg" width="200">
+  <img src="evi5.jpeg" width="200">
+</div>
+
+<script>
+function login() {
+  let user = document.getElementById("user").value;
+  let pass = document.getElementById("pass").value;
+
+  if(user !== "" && pass !== "") {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+
+    // music start after login
+    document.getElementById("bgMusic").play();
+  } else {
+    alert("Please enter username and password");
+  }
+}
+</script>
+
+</body>
 
 <!-- SLIDES -->
 <div id="slidesPage" class="hidden">
