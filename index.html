@@ -3,50 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Operation Asit - Classified Birthday Mission</title>
+<title>Top Secret Birthday File</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#0d1117;
+background:linear-gradient(135deg,#0f172a,#1e293b);
 color:white;
 text-align:center;
 overflow-x:hidden;
+min-height:100vh;
 }
 
 .container{
 padding:30px 20px;
 }
 
-.hidden{
-display:none;
+.card{
+max-width:750px;
+margin:auto;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,255,255,0.1);
 }
 
 h1{
 margin-bottom:20px;
-color:#ff4d6d;
-}
-
-.card{
-max-width:700px;
-margin:auto;
-background:#161b22;
-padding:25px;
-border-radius:15px;
-box-shadow:0 0 20px rgba(255,77,109,0.3);
+color:#ff7aa2;
 }
 
 button{
 padding:12px 25px;
 border:none;
-border-radius:25px;
-background:#ff4d6d;
+border-radius:30px;
+background:#ff4d88;
 color:white;
 font-size:16px;
 cursor:pointer;
@@ -54,210 +52,225 @@ margin-top:20px;
 }
 
 button:hover{
-opacity:0.9;
+transform:scale(1.05);
 }
 
 input{
 padding:12px;
-border-radius:10px;
+width:250px;
 border:none;
-width:220px;
+border-radius:12px;
 margin-top:15px;
 }
 
 img{
 width:100%;
 max-width:350px;
-border-radius:15px;
-margin-top:15px;
+border-radius:20px;
+margin-top:20px;
+}
+
+.hidden{
+display:none;
 }
 
 .heart{
 position:fixed;
+bottom:-20px;
 font-size:20px;
-animation:float 5s linear infinite;
+animation:float 8s linear infinite;
 opacity:0.7;
 }
 
 @keyframes float{
-0%{
-transform:translateY(100vh);
-opacity:0;
-}
-100%{
-transform:translateY(-100px);
-opacity:1;
-}
+0%{transform:translateY(0);opacity:0;}
+100%{transform:translateY(-110vh);opacity:1;}
 }
 
-.final{
+.typewriter{
 font-size:22px;
-line-height:1.8;
+color:#ffd6e5;
+margin-top:20px;
+min-height:40px;
+}
+
+.final-message{
+line-height:1.9;
+font-size:18px;
 }
 </style>
 </head>
+
 <body>
-<!-- 🎵 AUDIO (ADD YOUR SONG LINK HERE) -->
+
+<!-- 🎵 MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="sitare.mpeg" type="audio/mpeg">
+  <source src="sitare.moeg" type="audio/mpeg">
 </audio>
+
 <div class="container">
 
+<!-- LOGIN -->
 <div id="login" class="card">
-<h1>⚠️ CLASSIFIED FILE ⚠️</h1>
+<h1>🔒 TOP SECRET FILE</h1>
+
 <p>
-The one who holds my heart❤️
-<br><br>
-Access to confidential birthday mission requires verification.
+Access Restricted<br><br>
+A confidential file has been recovered.
 </p>
 
-<input type="text" id="password" placeholder="Enter Secret Code">
+<input type="text" id="password" placeholder="Enter Secret Access Code">
+
 <br>
 
-<button onclick="checkPassword()">Unlock File</button>
+<button onclick="unlock()">Unlock File</button>
 
-<p id="msg" style="margin-top:15px;color:#ff8080;"></p>
+<p id="error" style="margin-top:15px;color:#ffb3c6;"></p>
 </div>
 
-<div id="mission" class="hidden">
+<!-- LOADING -->
+<div id="loadingPage" class="hidden card">
+<h1>Verification In Progress</h1>
+<div class="typewriter" id="typewriter"></div>
+</div>
 
-<div class="card" id="slide">
-<h1 id="title"></h1>
-
-<img id="photo" src="">
-
-<p id="text" style="margin-top:15px;"></p>
-
+<!-- SLIDES -->
+<div id="slidesPage" class="hidden">
+<div class="card">
+<h1 id="slideTitle"></h1>
+<img id="slideImage">
+<p id="slideText" style="margin-top:20px;"></p>
 <button onclick="nextSlide()">Next Evidence</button>
 </div>
-
 </div>
 
-<div id="finalPage" class="hidden card final">
+<!-- FINAL -->
+<div id="finalPage" class="hidden card">
 <h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
 
+<div class="final-message">
+
 <p>
-Final Report:
-<br><br>
+<strong>CONFIDENTIAL REPORT</strong><br><br>
 
-ASIT has been found guilty of:
-<br><br>
+MY DEAR FAVOURITE PERSON❤️<br><br>
 
-❤️ Making someone smile every day
-<br>
-🌟 Being special without even trying
-<br>
-🤗 Being supportive and caring
-<br>
-💖 Creating unforgettable memories
-<br><br>
+❤️ HAPPY BIRTHDAY ASIT ❤️<br><br>
 
-Sentence Awarded:
-<br>
-Lifetime of happiness, success and love.
-<br><br>
-
-🎂 HAPPY BIRTHDAY ASIT 🎂
-<br><br>
-
-May all your dreams come true and may this year bring you endless happiness.
-<br><br>
-
-With lots of love ❤️
+Priyanka ❤️
 </p>
 
+<button onclick="showSecret()">One Last Secret...</button>
+
+</div>
+</div>
+
+<!-- SECRET -->
+<div id="secretPage" class="hidden card">
+<h1>💌 Final Secret</h1>
+
+<p style="font-size:22px;line-height:1.8;">
+The biggest secret is... it was a love letter ❤️
+</p>
 </div>
 
 </div>
 
 <script>
 
-function checkPassword(){
+function unlock(){
 
-let pass=document.getElementById("password").value.toUpperCase();
+let pass=document.getElementById("password").value;
 
-if(pass==="ASIT"){
+if(pass.toLowerCase()=="agentasit"){
+
 document.getElementById("login").style.display="none";
-document.getElementById("mission").classList.remove("hidden");
-showSlide();
+document.getElementById("loadingPage").classList.remove("hidden");
+
+// 🎵 AUTO MUSIC PLAY
+let music=document.getElementById("bgMusic");
+music.play().catch(()=>{});
+
+startTyping();
+
 }else{
-document.getElementById("msg").innerText=
-"❌ Incorrect Code. Hint: Aaj kis ka birthday hai?";
+
+document.getElementById("error").innerHTML="❌ Access Denied";
 }
+}
+
+const messages=[
+"Scanning records...",
+"Verifying identity...",
+"Matching memories...",
+"Access Granted...",
+"Welcome, Agent Asit ❤️"
+];
+
+let msgIndex=0;
+
+function startTyping(){
+
+let box=document.getElementById("typewriter");
+
+let interval=setInterval(()=>{
+
+if(msgIndex<messages.length){
+box.innerHTML=messages[msgIndex];
+msgIndex++;
+}else{
+clearInterval(interval);
+
+setTimeout(()=>{
+document.getElementById("loadingPage").style.display="none";
+document.getElementById("slidesPage").classList.remove("hidden");
+showSlide();
+},1500);
+}
+
+},1200);
 }
 
 const slides=[
-{
-title:"Evidence #1",
-img:"evis1.jpeg",
-text:"This smile has the power to make someone's whole day better. 😊"
-},
-{
-title:"Evidence #2",
-img:"evi4.jpeg",
-text:"A person who keeps moving forward no matter what."
-},
-{
-title:"Evidence #3",
-img:"evi3.jpeg",
-text:"Every memory becomes special because of you. ❤️"
-},
-{
-title:"Evidence #4",
-img:"evi6.jpeg",
-text:"Distance and time can never reduce true affection."
-},
-{
-title:"Evidence #5",
-img:"evis2.jpeg",
-text:"The most important evidence collected so far. 💖"
-}
+{title:"Evidence #1", img:"evi3.jpeg", text:"A beautiful smile."},
+{title:"Evidence #2", img:"evi4.jpeg", text:"Inspiring person."},
+{title:"Evidence #3", img:"evi6.jpeg", text:"Special memories."},
+{title:"Final Evidence", img:"evis1.jpeg", text:"Deeply loved."}
 ];
 
 let current=0;
-// 🎵 MUSIC START (NEW PART)
-let music=document.getElementById("bgMusic");
-music.play().catch(()=>{console.log("Autoplay blocked")});
 
 function showSlide(){
-
-document.getElementById("title").innerText=
-slides[current].title;
-
-document.getElementById("photo").src=
-slides[current].img;
-
-document.getElementById("text").innerText=
-slides[current].text;
+document.getElementById("slideTitle").innerHTML=slides[current].title;
+document.getElementById("slideImage").src=slides[current].img;
+document.getElementById("slideText").innerHTML=slides[current].text;
 }
 
 function nextSlide(){
-
 current++;
-
 if(current<slides.length){
 showSlide();
 }else{
-document.getElementById("mission").style.display="none";
+document.getElementById("slidesPage").style.display="none";
 document.getElementById("finalPage").classList.remove("hidden");
 }
 }
 
+function showSecret(){
+document.getElementById("finalPage").style.display="none";
+document.getElementById("secretPage").classList.remove("hidden");
+}
+
+// ❤️ floating hearts
 for(let i=0;i<30;i++){
-
 let heart=document.createElement("div");
-
 heart.className="heart";
-
 heart.innerHTML="❤️";
-
 heart.style.left=Math.random()*100+"vw";
-
-heart.style.animationDuration=
-(3+Math.random()*5)+"s";
-
+heart.style.animationDuration=(5+Math.random()*5)+"s";
 document.body.appendChild(heart);
 }
+
 </script>
 
 </body>
