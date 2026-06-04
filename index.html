@@ -97,13 +97,16 @@ line-height:1.8;
 </style>
 </head>
 <body>
-
+<!-- 🎵 AUDIO (ADD YOUR SONG LINK HERE) -->
+<audio id="bgMusic" loop>
+  <source src="sitare.mpeg" type="audio/mpeg">
+</audio>
 <div class="container">
 
 <div id="login" class="card">
 <h1>⚠️ CLASSIFIED FILE ⚠️</h1>
 <p>
-Subject Detected: ASIT
+The one who holds my heart❤️
 <br><br>
 Access to confidential birthday mission requires verification.
 </p>
@@ -137,7 +140,7 @@ Access to confidential birthday mission requires verification.
 Final Report:
 <br><br>
 
-Subject ASIT has been found guilty of:
+ASIT has been found guilty of:
 <br><br>
 
 ❤️ Making someone smile every day
@@ -186,32 +189,35 @@ document.getElementById("msg").innerText=
 const slides=[
 {
 title:"Evidence #1",
-img:"photo1.jpg",
+img:"evis1.jpeg",
 text:"This smile has the power to make someone's whole day better. 😊"
 },
 {
 title:"Evidence #2",
-img:"photo2.jpg",
+img:"evi4.jpeg",
 text:"A person who keeps moving forward no matter what."
 },
 {
 title:"Evidence #3",
-img:"photo3.jpg",
+img:"evi3.jpeg",
 text:"Every memory becomes special because of you. ❤️"
 },
 {
 title:"Evidence #4",
-img:"photo4.jpg",
+img:"evi6.jpeg",
 text:"Distance and time can never reduce true affection."
 },
 {
 title:"Evidence #5",
-img:"photo5.jpg",
+img:"evis2.jpeg",
 text:"The most important evidence collected so far. 💖"
 }
 ];
 
 let current=0;
+// 🎵 MUSIC START (NEW PART)
+let music=document.getElementById("bgMusic");
+music.play().catch(()=>{console.log("Autoplay blocked")});
 
 function showSlide(){
 
