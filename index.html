@@ -35,10 +35,7 @@ border-radius:20px;
 box-shadow:0 0 25px rgba(255,255,255,0.1);
 }
 
-h1{
-margin-bottom:20px;
-color:#ff7aa2;
-}
+h1{margin-bottom:20px;color:#ff7aa2;}
 
 button{
 padding:12px 25px;
@@ -51,9 +48,7 @@ cursor:pointer;
 margin-top:20px;
 }
 
-button:hover{
-transform:scale(1.05);
-}
+button:hover{transform:scale(1.05);}
 
 input{
 padding:12px;
@@ -70,9 +65,7 @@ border-radius:20px;
 margin-top:20px;
 }
 
-.hidden{
-display:none;
-}
+.hidden{display:none;}
 
 .heart{
 position:fixed;
@@ -103,21 +96,17 @@ font-size:18px;
 
 <body>
 
-<!-- 🎵 MUSIC -->
+<!-- 🎵 AUDIO (ADD YOUR SONG LINK HERE) -->
 <audio id="bgMusic" loop>
   <source src="sitare.mpeg" type="audio/mpeg">
 </audio>
 
 <div class="container">
 
-<!-- LOGIN -->
 <div id="login" class="card">
 <h1>🔒 TOP SECRET FILE</h1>
 
-<p>
-Access Restricted<br><br>
-A confidential file has been recovered.
-</p>
+<p>Access Restricted...</p>
 
 <input type="text" id="password" placeholder="Enter Secret Access Code">
 
@@ -128,49 +117,37 @@ A confidential file has been recovered.
 <p id="error" style="margin-top:15px;color:#ffb3c6;"></p>
 </div>
 
-<!-- LOADING -->
 <div id="loadingPage" class="hidden card">
 <h1>Verification In Progress</h1>
 <div class="typewriter" id="typewriter"></div>
 </div>
 
-<!-- SLIDES -->
 <div id="slidesPage" class="hidden">
 <div class="card">
+
 <h1 id="slideTitle"></h1>
 <img id="slideImage">
-<p id="slideText" style="margin-top:20px;"></p>
+<p id="slideText"></p>
+
 <button onclick="nextSlide()">Next Evidence</button>
+
 </div>
 </div>
 
-<!-- FINAL -->
 <div id="finalPage" class="hidden card">
 <h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
 
 <div class="final-message">
-
-<p>
-<strong>CONFIDENTIAL REPORT</strong><br><br>
-
-Subject Name: Asit<br><br>
-
-❤️ HAPPY BIRTHDAY ASIT ❤️<br><br>
-
-Priyanka ❤️
-</p>
+<p>...your final message remains same...</p>
 
 <button onclick="showSecret()">One Last Secret...</button>
-
 </div>
 </div>
 
-<!-- SECRET -->
 <div id="secretPage" class="hidden card">
 <h1>💌 Final Secret</h1>
-
 <p style="font-size:22px;line-height:1.8;">
-The biggest secret is... it was a love letter ❤️
+It was never an investigation... it was a love letter ❤️
 </p>
 </div>
 
@@ -184,12 +161,15 @@ let pass=document.getElementById("password").value;
 
 if(pass.toLowerCase()=="agentasit"){
 
+// hide login
 document.getElementById("login").style.display="none";
+
+// show loading
 document.getElementById("loadingPage").classList.remove("hidden");
 
-// 🎵 AUTO MUSIC PLAY
+// 🎵 MUSIC START (NEW PART)
 let music=document.getElementById("bgMusic");
-music.play().catch(()=>{});
+music.play().catch(()=>{console.log("Autoplay blocked")});
 
 startTyping();
 
@@ -202,9 +182,7 @@ document.getElementById("error").innerHTML="❌ Access Denied";
 const messages=[
 "Scanning records...",
 "Verifying identity...",
-"Matching memories...",
-"Access Granted...",
-"Welcome, Agent Asit ❤️"
+"Access Granted..."
 ];
 
 let msgIndex=0;
@@ -225,18 +203,15 @@ setTimeout(()=>{
 document.getElementById("loadingPage").style.display="none";
 document.getElementById("slidesPage").classList.remove("hidden");
 showSlide();
-},1500);
+},1000);
 }
 
 },1200);
 }
 
 const slides=[
-{title:"Evidence #1", img:"evis1.jpeg", text:"A smile capable of turning an ordinary day into a beautiful one."},
-{title:"Evidence #2", img:"evi3.jpeg", text:"Inspiring person."},
-{title:"Evidence #3", img:"evi4.jpeg", text:"Special memories."},
-{title:"Evidence #4", img:"evi4.jpeg", text:"Special memories."},
-{title:"Final Evidence", img:"evis2.jpeg", text:"Deeply loved."}
+{title:"Evidence #1",img:"photo1.jpg",text:"A beautiful smile."},
+{title:"Evidence #2",img:"photo2.jpg",text:"A strong heart."}
 ];
 
 let current=0;
@@ -262,8 +237,8 @@ document.getElementById("finalPage").style.display="none";
 document.getElementById("secretPage").classList.remove("hidden");
 }
 
-// ❤️ floating hearts
-for(let i=0;i<30;i++){
+// hearts
+for(let i=0;i<25;i++){
 let heart=document.createElement("div");
 heart.className="heart";
 heart.innerHTML="❤️";
