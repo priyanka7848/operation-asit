@@ -150,127 +150,124 @@ A confidential file has been recovered.
 
 <div class="final-message">
 
-<p>
-<strong>CONFIDENTIAL REPORT</strong><br><br>
+Final Report:
+<br><br>
 
-MY DEAR FAVOURITE PERSON❤️<br><br>
+Subject ASIT has been found guilty of:
+<br><br>
 
-❤️ HAPPY BIRTHDAY ASIT ❤️<br><br>
+❤️ Making someone smile every day
+<br>
+🌟 Being special without even trying
+<br>
+🤗 Being supportive and caring
+<br>
+💖 Creating unforgettable memories
+<br><br>
 
-Priyanka ❤️
+Sentence Awarded:
+<br>
+Lifetime of happiness, success and love.
+<br><br>
+
+🎂 HAPPY BIRTHDAY ASIT 🎂
+<br><br>
+
+May all your dreams come true and may this year bring you endless happiness.
+<br><br>
+
+With lots of love ❤️
 </p>
 
-<button onclick="showSecret()">One Last Secret...</button>
-
-</div>
-</div>
-
-<!-- SECRET -->
-<div id="secretPage" class="hidden card">
-<h1>💌 Final Secret</h1>
-
-<p style="font-size:22px;line-height:1.8;">
-The biggest secret is... it was a love letter ❤️
-</p>
 </div>
 
 </div>
 
 <script>
 
-function unlock(){
+function checkPassword(){
 
-let pass=document.getElementById("password").value;
+let pass=document.getElementById("password").value.toUpperCase();
 
-if(pass.toLowerCase()=="agentasit"){
-
+if(pass==="ASIT"){
 document.getElementById("login").style.display="none";
-document.getElementById("loadingPage").classList.remove("hidden");
-
-// 🎵 AUTO MUSIC PLAY
-let music=document.getElementById("bgMusic");
-music.play().catch(()=>{});
-
-startTyping();
-
-}else{
-
-document.getElementById("error").innerHTML="❌ Access Denied";
-}
-}
-
-const messages=[
-"Scanning records...",
-"Verifying identity...",
-"Matching memories...",
-"Access Granted...",
-"Welcome, Agent Asit ❤️"
-];
-
-let msgIndex=0;
-
-function startTyping(){
-
-let box=document.getElementById("typewriter");
-
-let interval=setInterval(()=>{
-
-if(msgIndex<messages.length){
-box.innerHTML=messages[msgIndex];
-msgIndex++;
-}else{
-clearInterval(interval);
-
-setTimeout(()=>{
-document.getElementById("loadingPage").style.display="none";
-document.getElementById("slidesPage").classList.remove("hidden");
+document.getElementById("mission").classList.remove("hidden");
 showSlide();
-},1500);
+}else{
+document.getElementById("msg").innerText=
+"❌ Incorrect Code. Hint: Aaj kis ka birthday hai?";
 }
-
-},1200);
 }
 
 const slides=[
-{title:"Evidence #1", img:"evi3.jpeg", text:"A beautiful smile."},
-{title:"Evidence #2", img:"evi4.jpeg", text:"Inspiring person."},
-{title:"Evidence #3", img:"evi6.jpeg", text:"Special memories."},
-{title:"Final Evidence", img:"evis1.jpeg", text:"Deeply loved."}
+{
+title:"Evidence #1",
+img:"evis1.jpeg",
+text:"This smile has the power to make someone's whole day better. 😊"
+},
+{
+title:"Evidence #2",
+img:"evi4.jpg",
+text:"A person who keeps moving forward no matter what."
+},
+{
+title:"Evidence #3",
+img:"evi6.jpg",
+text:"Every memory becomes special because of you. ❤️"
+},
+{
+title:"Evidence #4",
+img:"evi3.jpg",
+text:"Distance and time can never reduce true affection."
+},
+{
+title:"Evidence #5",
+img:"evis2.jpg",
+text:"The most important evidence collected so far. 💖"
+}
 ];
 
 let current=0;
 
 function showSlide(){
-document.getElementById("slideTitle").innerHTML=slides[current].title;
-document.getElementById("slideImage").src=slides[current].img;
-document.getElementById("slideText").innerHTML=slides[current].text;
+
+document.getElementById("title").innerText=
+slides[current].title;
+
+document.getElementById("photo").src=
+slides[current].img;
+
+document.getElementById("text").innerText=
+slides[current].text;
 }
 
 function nextSlide(){
+
 current++;
+
 if(current<slides.length){
 showSlide();
 }else{
-document.getElementById("slidesPage").style.display="none";
+document.getElementById("mission").style.display="none";
 document.getElementById("finalPage").classList.remove("hidden");
 }
 }
 
-function showSecret(){
-document.getElementById("finalPage").style.display="none";
-document.getElementById("secretPage").classList.remove("hidden");
-}
-
-// ❤️ floating hearts
 for(let i=0;i<30;i++){
+
 let heart=document.createElement("div");
+
 heart.className="heart";
+
 heart.innerHTML="❤️";
+
 heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+heart.style.animationDuration=
+(3+Math.random()*5)+"s";
+
 document.body.appendChild(heart);
 }
-
 </script>
 
 </body>
