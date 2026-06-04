@@ -104,9 +104,11 @@ font-size:18px;
 <div class="container">
 
 <div id="login" class="card">
-<h1>🔒 TOP SECRET FILE</h1>
+<h1>🔒 TOP SECRET FILE 🔒</h1>
 
-<p>Access Restricted...</p>
+<p>Access Granted... but only for someone special❤️. </p>
+<p>This is not just a website...It's a secret meant for you❤️.Agar tum ready ho, toh enter karo apni duniya mein </p>
+
 
 <input type="text" id="password" placeholder="Enter Secret Access Code">
 
@@ -133,6 +135,45 @@ font-size:18px;
 
 </div>
 </div>
+<div id="finalPage" class="hidden card final">
+<h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
+
+<p>
+Final Report:
+<br><br>
+
+Subject ASIT has been found guilty of:
+<br><br>
+
+❤️ Making someone smile every day
+<br>
+🌟 Being special without even trying
+<br>
+🤗 Being supportive and caring
+<br>
+💖 Creating unforgettable memories
+<br><br>
+
+Sentence Awarded:
+<br>
+Lifetime of happiness, success and love.
+<br><br>
+
+🎂 HAPPY BIRTHDAY ASIT 🎂
+<br><br>
+
+May all your dreams come true and may this year bring you endless happiness.
+<br><br>
+
+With lots of love ❤️
+</p>
+
+</div>
+
+</div>
+
+<script>
+
 
 <div id="finalPage" class="hidden card">
 <h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
@@ -210,17 +251,47 @@ showSlide();
 }
 
 const slides=[
-{title:"Evidence #1",img:"photo1.jpg",text:"A beautiful smile."},
-{title:"Evidence #2",img:"photo2.jpg",text:"A strong heart."}
+{
+title:"Evidence #1",
+img:"evis1.jpeg",
+text:"This smile has the power to make someone's whole day better. 😊"
+},
+{
+title:"Evidence #2",
+img:"evi3.jpeg",
+text:"A person who keeps moving forward no matter what."
+},
+{
+title:"Evidence #3",
+img:"evi4.jpg",
+text:"Every memory becomes special because of you. ❤️"
+},
+{
+title:"Evidence #4",
+img:"photo4.jpg",
+text:"Distance and time can never reduce true affection."
+},
+{
+title:"Evidence #5",
+img:"evis2.jpg",
+text:"The most important evidence collected so far. 💖"
+}
 ];
 
 let current=0;
 
 function showSlide(){
-document.getElementById("slideTitle").innerHTML=slides[current].title;
-document.getElementById("slideImage").src=slides[current].img;
-document.getElementById("slideText").innerHTML=slides[current].text;
+
+document.getElementById("title").innerText=
+slides[current].title;
+
+document.getElementById("photo").src=
+slides[current].img;
+
+document.getElementById("text").innerText=
+slides[current].text;
 }
+
 
 function nextSlide(){
 current++;
