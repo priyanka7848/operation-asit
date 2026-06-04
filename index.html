@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Secret Birthday File</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+text-align:center;
+overflow-x:hidden;
+min-height:100vh;
+}
+
+.container{
+padding:30px 20px;
+}
+
+.card{
+max-width:750px;
+margin:auto;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,255,255,0.1);
+}
+
+h1{
+margin-bottom:20px;
+color:#ff7aa2;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff4d88;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+input{
+padding:12px;
+width:250px;
+border:none;
+border-radius:12px;
+margin-top:15px;
+}
+
+img{
+width:100%;
+max-width:350px;
+border-radius:20px;
+margin-top:20px;
+}
+
+.hidden{
+display:none;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:float 8s linear infinite;
+opacity:0.7;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:0;
+}
+100%{
+transform:translateY(-110vh);
+opacity:1;
+}
+}
+
+.typewriter{
+font-size:22px;
+color:#ffd6e5;
+margin-top:20px;
+min-height:40px;
+}
+
+.final-message{
+line-height:1.9;
+font-size:18px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- LOGIN PAGE -->
+<div id="login" class="card">
+<h1>🔒 TOP SECRET FILE 🔒</h1>
+
+<p>
+Access Restricted
+<br><br>
+A confidential file has been recovered.
+<br>
+This file contains classified memories,
+special moments and a birthday surprise.
+<br><br>
+Only one person is authorized to view it.
+</p>
+
+<input type="text" id="password" placeholder="Enter Secret Access Code">
+
+<br>
+
+<button onclick="unlock()">Unlock File</button>
+
+<p id="error" style="margin-top:15px;color:#ffb3c6;"></p>
+</div>
+
+<!-- LOADING PAGE -->
+<div id="loadingPage" class="hidden card">
+<h1>Verification In Progress</h1>
+<div class="typewriter" id="typewriter"></div>
+</div>
+
+<!-- SLIDES -->
+<div id="slidesPage" class="hidden">
+
+<div class="card">
+
+<h1 id="slideTitle"></h1>
+
+<img id="slideImage" src="">
+
+<p id="slideText" style="margin-top:20px;"></p>
+
+<button onclick="nextSlide()">Next Evidence</button>
+
+</div>
+
+</div>
+
+<!-- FINAL PAGE -->
+<div id="finalPage" class="hidden card">
+
+<h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
+
+<div class="final-message">
+
+<p>
+
+<strong>CONFIDENTIAL REPORT</strong>
+
+<br><br>
+
+The One Who Holds My heart❤️ and Changed Everything❤️ : Asit
+
+<br><br>
+
+After reviewing all available evidence,
+the investigation has revealed something unexpected...
+
+<br><br>
+
+The smile,
+the kindness,
+the strength,
+the little moments,
+the memories,
+and the way he makes someone's world brighter...
+
+<br><br>
+
+All of them point to the same person.
+
+<br><br>
+
+<strong>You.</strong>
+
+<br><br>
+
+❤️ Final Verdict ❤️
+
+<br><br>
+
+You are guilty of:
+
+<br><br>
+
+• Stealing someone's heart without permission
+
+<br>
+
+• Becoming the reason behind countless smiles
+
+<br>
+
+• Turning ordinary days into unforgettable memories
+
+<br>
+
+• Being missed more than you could ever imagine
+
+<br><br>
+
+No defense was found.
+
+<br>
+
+No appeal is allowed.
+
+<br>
+
+The verdict is final.
+
+<br><br>
+
+🎂 Birthday Sentence 🎂
+
+<br><br>
+
+✨ Endless happiness
+
+<br>
+
+✨ Success in everything you do
+
+<br>
+
+✨ Beautiful memories
+
+<br>
+
+✨ A lifetime of being deeply loved
+
+<br><br>
+
+❤️ HAPPY BIRTHDAY MY LOVE ❤️
+
+<br><br>
+
+If there is one thing this investigation proved,
+it's that you are far more special than you realize.
+
+<br><br>
+
+No matter how many birthdays come and go,
+there will always be a place in my heart
+that belongs only to you.
+
+<br><br>
+
+Thank you for every smile,
+every laugh,
+every memory,
+and every moment.
+
+<br><br>
+
+And if I had to choose again...
+
+<br><br>
+
+I would still choose you.
+
+<br><br>
+
+❤️ With all my love,
+
+<br>
+
+Priyanka ❤️
+
+</p>
+
+<button onclick="showSecret()">One Last Secret...</button>
+
+</div>
+
+</div>
+
+<!-- SECRET PAGE -->
+<div id="secretPage" class="hidden card">
+
+<h1>💌 Final Secret 💌</h1>
+
+<p style="font-size:22px;line-height:1.8;">
+
+The biggest secret of this entire website...
+
+<br><br>
+
+is that it was never an investigation.
+
+<br><br>
+
+It was a love letter disguised as one.
+
+<br><br>
+
+❤️ Happy Birthday, My Favorite Person ❤️
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function unlock(){
+
+let pass=document.getElementById("password").value;
+
+if(pass.toLowerCase()=="agentasit"){
+
+document.getElementById("login").style.display="none";
+document.getElementById("loadingPage").classList.remove("hidden");
+
+startTyping();
+
+}else{
+
+document.getElementById("error").innerHTML=
+"❌ Access Denied<br>Hint: Agent + His Name";
+}
+}
+
+const messages=[
+"Scanning records...",
+"Verifying identity...",
+"Matching memories...",
+"Access Granted...",
+"Welcome, Agent Asit ❤️"
+];
+
+let msgIndex=0;
+
+function startTyping(){
+
+let box=document.getElementById("typewriter");
+
+let interval=setInterval(()=>{
+
+if(msgIndex<messages.length){
+
+box.innerHTML=messages[msgIndex];
+msgIndex++;
+
+}else{
+
+clearInterval(interval);
+
+setTimeout(()=>{
+
+document.getElementById("loadingPage").style.display="none";
+document.getElementById("slidesPage").classList.remove("hidden");
+
+showSlide();
+
+},1500);
+
+}
+
+},1200);
+}
+
+const slides=[
+
+{
+title:"Evidence #1",
+img:"evis1.jpeg",
+text:"A smile capable of turning an ordinary day into a beautiful one."
+},
+
+{
+title:"Evidence #2",
+img:"evi6.jpeg",
+text:"A person whose determination inspires everyone around him."
+},
+
+{
+title:"Evidence #3",
+img:"evi4.jpeg",
+text:"Every memory becomes more meaningful when you're a part of it."
+},
+
+{
+title:"Evidence #4",
+img:"evi3.jpeg",
+text:"Distance may separate places, but never genuine feelings."
+},
+
+{
+title:"Final Evidence",
+img:"evis2.jpeg",
+text:"The strongest piece of evidence collected during this investigation: You are deeply appreciated, admired and loved."
+}
+
+];
+
+let current=0;
+
+function showSlide(){
+
+document.getElementById("slideTitle").innerHTML=slides[current].title;
+document.getElementById("slideImage").src=slides[current].img;
+document.getElementById("slideText").innerHTML=slides[current].text;
+
+}
+
+function nextSlide(){
+
+current++;
+
+if(current<slides.length){
+
+showSlide();
+
+}else{
+
+document.getElementById("slidesPage").style.display="none";
+document.getElementById("finalPage").classList.remove("hidden");
+
+}
+}
+
+function showSecret(){
+
+document.getElementById("finalPage").style.display="none";
+document.getElementById("secretPage").classList.remove("hidden");
+
+}
+
+for(let i=0;i<35;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>
