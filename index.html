@@ -3,138 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Secret Birthday File</title>
+<title>Operation Asit - Classified Birthday Mission</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+font-family:Arial, sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f172a,#1e293b);
+background:#0d1117;
 color:white;
 text-align:center;
 overflow-x:hidden;
-min-height:100vh;
 }
 
 .container{
 padding:30px 20px;
 }
 
-.card{
-max-width:750px;
-margin:auto;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-padding:30px;
-border-radius:20px;
-box-shadow:0 0 25px rgba(255,255,255,0.1);
+.hidden{
+display:none;
 }
 
-h1{margin-bottom:20px;color:#ff7aa2;}
+h1{
+margin-bottom:20px;
+color:#ff4d6d;
+}
+
+.card{
+max-width:700px;
+margin:auto;
+background:#161b22;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(255,77,109,0.3);
+}
 
 button{
 padding:12px 25px;
 border:none;
-border-radius:30px;
-background:#ff4d88;
+border-radius:25px;
+background:#ff4d6d;
 color:white;
 font-size:16px;
 cursor:pointer;
 margin-top:20px;
 }
 
-button:hover{transform:scale(1.05);}
+button:hover{
+opacity:0.9;
+}
 
 input{
 padding:12px;
-width:250px;
+border-radius:10px;
 border:none;
-border-radius:12px;
+width:220px;
 margin-top:15px;
 }
 
 img{
 width:100%;
 max-width:350px;
-border-radius:20px;
-margin-top:20px;
+border-radius:15px;
+margin-top:15px;
 }
-
-.hidden{display:none;}
 
 .heart{
 position:fixed;
-bottom:-20px;
 font-size:20px;
-animation:float 8s linear infinite;
+animation:float 5s linear infinite;
 opacity:0.7;
 }
 
 @keyframes float{
-0%{transform:translateY(0);opacity:0;}
-100%{transform:translateY(-110vh);opacity:1;}
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+100%{
+transform:translateY(-100px);
+opacity:1;
+}
 }
 
-.typewriter{
+.final{
 font-size:22px;
-color:#ffd6e5;
-margin-top:20px;
-min-height:40px;
-}
-
-.final-message{
-line-height:1.9;
-font-size:18px;
+line-height:1.8;
 }
 </style>
 </head>
-
 <body>
-
-<!-- 🎵 AUDIO (ADD YOUR SONG LINK HERE) -->
-<audio id="bgMusic" loop>
-  <source src="sitare.mpeg" type="audio/mpeg">
-</audio>
 
 <div class="container">
 
 <div id="login" class="card">
-<h1>🔒 TOP SECRET FILE 🔒</h1>
+<h1>⚠️ CLASSIFIED FILE ⚠️</h1>
+<p>
+Subject Detected: ASIT
+<br><br>
+Access to confidential birthday mission requires verification.
+</p>
 
-<p>Access Granted... but only for someone special❤️.
-This is not just a website...It's a secret meant for you❤️.Agar tum ready ho, toh enter karo apni duniya mein </p>
-
-
-<input type="text" id="password" placeholder="Enter Secret Access Code">
-
+<input type="text" id="password" placeholder="Enter Secret Code">
 <br>
 
-<button onclick="unlock()">Unlock File</button>
+<button onclick="checkPassword()">Unlock File</button>
 
-<p id="error" style="margin-top:15px;color:#ffb3c6;"></p>
+<p id="msg" style="margin-top:15px;color:#ff8080;"></p>
 </div>
 
-<div id="loadingPage" class="hidden card">
-<h1>Verification In Progress</h1>
-<div class="typewriter" id="typewriter"></div>
-</div>
+<div id="mission" class="hidden">
 
-<div id="slidesPage" class="hidden">
-<div class="card">
+<div class="card" id="slide">
+<h1 id="title"></h1>
 
-<h1 id="slideTitle"></h1>
-<img id="slideImage">
-<p id="slideText"></p>
+<img id="photo" src="">
+
+<p id="text" style="margin-top:15px;"></p>
 
 <button onclick="nextSlide()">Next Evidence</button>
+</div>
 
 </div>
-</div>
+
 <div id="finalPage" class="hidden card final">
 <h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
 
@@ -174,96 +169,34 @@ With lots of love ❤️
 
 <script>
 
+function checkPassword(){
 
-<div id="finalPage" class="hidden card">
-<h1>🎉 INVESTIGATION COMPLETED 🎉</h1>
+let pass=document.getElementById("password").value.toUpperCase();
 
-<div class="final-message">
-<p>...your final message remains same...</p>
-
-<button onclick="showSecret()">One Last Secret...</button>
-</div>
-</div>
-
-<div id="secretPage" class="hidden card">
-<h1>💌 Final Secret</h1>
-<p style="font-size:22px;line-height:1.8;">
-It was never an investigation... it was a love letter ❤️
-</p>
-</div>
-
-</div>
-
-<script>
-
-function unlock(){
-
-let pass=document.getElementById("password").value;
-
-if(pass.toLowerCase()=="agentasit"){
-
-// hide login
+if(pass==="ASIT"){
 document.getElementById("login").style.display="none";
-
-// show loading
-document.getElementById("loadingPage").classList.remove("hidden");
-
-// 🎵 MUSIC START (NEW PART)
-let music=document.getElementById("bgMusic");
-music.play().catch(()=>{console.log("Autoplay blocked")});
-
-startTyping();
-
-}else{
-
-document.getElementById("error").innerHTML="❌ Access Denied";
-}
-}
-
-const messages=[
-"Scanning records...",
-"Verifying identity...",
-"Access Granted..."
-];
-
-let msgIndex=0;
-
-function startTyping(){
-
-let box=document.getElementById("typewriter");
-
-let interval=setInterval(()=>{
-
-if(msgIndex<messages.length){
-box.innerHTML=messages[msgIndex];
-msgIndex++;
-}else{
-clearInterval(interval);
-
-setTimeout(()=>{
-document.getElementById("loadingPage").style.display="none";
-document.getElementById("slidesPage").classList.remove("hidden");
+document.getElementById("mission").classList.remove("hidden");
 showSlide();
-},1000);
+}else{
+document.getElementById("msg").innerText=
+"❌ Incorrect Code. Hint: Aaj kis ka birthday hai?";
 }
-
-},1200);
 }
 
 const slides=[
 {
 title:"Evidence #1",
-img:"evis1.jpeg",
+img:"photo1.jpg",
 text:"This smile has the power to make someone's whole day better. 😊"
 },
 {
 title:"Evidence #2",
-img:"evi3.jpeg",
+img:"photo2.jpg",
 text:"A person who keeps moving forward no matter what."
 },
 {
 title:"Evidence #3",
-img:"evi4.jpg",
+img:"photo3.jpg",
 text:"Every memory becomes special because of you. ❤️"
 },
 {
@@ -273,7 +206,7 @@ text:"Distance and time can never reduce true affection."
 },
 {
 title:"Evidence #5",
-img:"evis2.jpg",
+img:"photo5.jpg",
 text:"The most important evidence collected so far. 💖"
 }
 ];
@@ -292,32 +225,33 @@ document.getElementById("text").innerText=
 slides[current].text;
 }
 
-
 function nextSlide(){
+
 current++;
+
 if(current<slides.length){
 showSlide();
 }else{
-document.getElementById("slidesPage").style.display="none";
+document.getElementById("mission").style.display="none";
 document.getElementById("finalPage").classList.remove("hidden");
 }
 }
 
-function showSecret(){
-document.getElementById("finalPage").style.display="none";
-document.getElementById("secretPage").classList.remove("hidden");
-}
+for(let i=0;i<30;i++){
 
-// hearts
-for(let i=0;i<25;i++){
 let heart=document.createElement("div");
+
 heart.className="heart";
+
 heart.innerHTML="❤️";
+
 heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+heart.style.animationDuration=
+(3+Math.random()*5)+"s";
+
 document.body.appendChild(heart);
 }
-
 </script>
 
 </body>
